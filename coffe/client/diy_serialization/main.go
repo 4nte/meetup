@@ -5,7 +5,7 @@ import (
 	"log"
 	"net"
 
-	. "github.com/4nte/coffe/custom_serialization"
+	. "github.com/4nte/meetup/coffe/diy_serialization"
 	"github.com/gookit/goutil/dump"
 )
 
