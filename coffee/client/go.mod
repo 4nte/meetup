@@ -2,7 +2,12 @@ module github.com/4nte/coffe/client
 
 go 1.19
 
-require github.com/gookit/goutil v0.5.15
+require (
+	github.com/4nte/meetup/coffee/diy_serialization v0.0.0-00010101000000-000000000000
+	github.com/gookit/goutil v0.5.15
+)
+
+replace github.com/4nte/meetup/coffee/diy_serialization => ../diy_serialization
 
 require (
 	github.com/gookit/color v1.5.2 // indirect

@@ -1,4 +1,4 @@
-package custom_serialization
+package diy_serialization
 
 type MakeCoffeRequest struct {
 	CoffeType            string

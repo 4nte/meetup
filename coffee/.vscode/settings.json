@@ -1,0 +1,25 @@
+{
+    "folders": [
+        {
+          "name": "client",
+          "path": "client"
+        },
+        {
+          "name": "coffe machine server",
+          "path": "server"
+        },
+        {
+          "name": "Protocoll buffer definitions",
+          "path": "proto"
+        },
+        {
+          "name": "generated protobuf code",
+          "path": "gen"
+        },
+        {
+          "name": "DIY serialization",
+          "path": "diy_serialization"
+        },
+  
+      ]
+}
