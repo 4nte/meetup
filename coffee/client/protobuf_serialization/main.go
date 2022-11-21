@@ -1,11 +1,12 @@
 package main
 
-import "fmt"
-
-
-
+import "github.com/4nte/coffee/proto"
 
 func main() {
-	fmt.Println("lets gooo")
 
+	makeCoffeRequest := proto.MakeCoffeRequest{
+		Type: proto.CoffeType_COFFE_TYPE_AMERICANO,
+	}
+
+	SendMessageToCoffeeMachine()
 }

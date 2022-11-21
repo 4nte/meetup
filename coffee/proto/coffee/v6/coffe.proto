@@ -1,13 +1,6 @@
 syntax = "proto3";
-option go_package = "github.com/4nte/coffe/proto";
-package coffe;
-
-enum CoffeType {
-  UNSPECIFIED = 0;
-  CAPUCCINO = 1;
-  AMERICANO = 2;
-  LONG_BLACK = 3;
-}
+option go_package = "github.com/4nte/coffee/proto";
+package coffee;
 
 message LongBlack {
   // 2 shots recommended
@@ -42,23 +35,3 @@ message Cappuccino {
 }
 
 
-// instructs the coffe machine to make a coffe
-message MakeCoffeRequest {
-
-  oneof coffe_recipe {
-    Cappuccino cappuccino = 1;
-    Macchiato macchiato = 2;
-    LongBlack long_black = 3;
-  }
-
-  // amount of sugar in grams
-  int32 grams_of_sugar = 4;
-
-  // delays the start of the coffe brewing for specified amount in seconds
-  int32 delay = 5;
-}
-
-// When a coffe is successfully brewed, this message is sent to the client
-message MakeCoffeResponse {
-
-}

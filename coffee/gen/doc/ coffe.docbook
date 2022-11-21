@@ -6,7 +6,7 @@
     <title>coffe.proto</title>
     <para></para>
     
-    <section id="coffe.MakeCoffeRequest">
+    <section id="coffee.MakeCoffeRequest">
       <title>MakeCoffeRequest</title>
       <para>instructs the coffe machine to make a coffe</para>
       
@@ -29,7 +29,7 @@
             
             <row>
               <entry>type</entry>
-              <entry><link linkend="coffe.CoffeType">CoffeType</link></entry>
+              <entry><link linkend="coffee.CoffeType">CoffeType</link></entry>
               <entry></entry>
               <entry><para>type of coffe to make</para></entry>
             </row>
@@ -42,7 +42,7 @@
     </section>
     
     
-    <section id="coffe.CoffeType">
+    <section id="coffee.CoffeType">
       <title>CoffeType</title>
       <para></para>
       <table frame="all">
@@ -61,25 +61,25 @@
           <tbody>
             
             <row>
-              <entry>COFFE_TYPE_UNSPECIFIED</entry>
+              <entry>UNSPECIFIED</entry>
               <entry>0</entry>
               <entry><para></para></entry>
             </row>
             
             <row>
-              <entry>COFFE_TYPE_ESPRESSO</entry>
+              <entry>ESPRESSO</entry>
               <entry>1</entry>
               <entry><para></para></entry>
             </row>
             
             <row>
-              <entry>COFFE_TYPE_CAPUCCINO</entry>
+              <entry>CAPUCCINO</entry>
               <entry>2</entry>
               <entry><para></para></entry>
             </row>
             
             <row>
-              <entry>COFFE_TYPE_AMERICANO</entry>
+              <entry>AMERICANO</entry>
               <entry>3</entry>
               <entry><para></para></entry>
             </row>

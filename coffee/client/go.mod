@@ -1,4 +1,4 @@
-module github.com/4nte/coffe/client
+module github.com/4nte/coffee/client
 
 go 1.19
 

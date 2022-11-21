@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option go_package = "github.com/4nte/coffee/proto";
+package coffee;
+
+enum CoffeType {
+  UNSPECIFIED = 0;
+  ESPRESSO = 1;
+  CAPUCCINO = 2;
+  AMERICANO = 3;
+}
+
+// instructs the coffe machine to make a coffe
+message MakeCoffeRequest {
+
+  // type of coffe to make
+  CoffeType type = 1;
+
+  // amount of sugar in grams
+  int32 sugar_amount = 2;
+
+  // delays the start of the coffe brewing for specified amount in seconds
+  int32 delay = 3;
+}
