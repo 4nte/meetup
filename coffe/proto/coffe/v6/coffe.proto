@@ -1,0 +1,44 @@
+syntax = "proto3";
+option go_package = "github.com/4nte/coffe/proto";
+package coffe;
+
+enum CoffeType {
+  COFFE_TYPE_UNSPECIFIED = 0;
+  COFFE_TYPE_ESPRESSO = 1;
+  COFFE_TYPE_CAPUCCINO = 2;
+  COFFE_TYPE_AMERICANO = 3;
+}
+
+message LongBlack {
+  // 2 shots recommended
+  int32 shots_of_espresso = 1;
+  
+  // 90 ml recommended
+  int32 how_water_ml = 2;  
+}
+
+// Caffè macchiato, sometimes called espresso macchiato, is an espresso coffee drink with a small amount of milk, usually foamed.
+message Macchiato {
+  // 1 shot recommended
+  int32 shots_of_espresso = 1;
+
+  // 1-2 ml recommended
+  int32 steamed_milk_ml = 2;
+}
+
+// Traditionally a cappuccino is viewed as a drink that should only be consumed in the morning
+message Cappuccino {
+  // 1-2 shots of espresso
+  int32 shots_of_espresso = 1;
+
+  // 60 ml recommended
+  int32 steamed_milk_ml = 2;
+
+  // 60 ml recommended
+  int32 foamed_milk_ml = 3;
+
+  // optional sprinkling of chocolate powder
+  bool sprinklinkg_of_chocolate_poweder = 4;
+}
+
+

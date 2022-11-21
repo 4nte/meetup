@@ -1,0 +1,64 @@
+syntax = "proto3";
+option go_package = "github.com/4nte/coffe/proto";
+package coffe;
+
+enum CoffeType {
+  UNSPECIFIED = 0;
+  CAPUCCINO = 1;
+  AMERICANO = 2;
+  LONG_BLACK = 3;
+}
+
+message LongBlack {
+  // 2 shots recommended
+  int32 shots_of_espresso = 1;
+  
+  // 90 ml recommended
+  int32 how_water_ml = 2;  
+}
+
+// Caffè macchiato, sometimes called espresso macchiato, is an espresso coffee drink with a small amount of milk, usually foamed.
+message Macchiato {
+  // 1 shot recommended
+  int32 shots_of_espresso = 1;
+
+  // 1-2 ml recommended
+  int32 steamed_milk_ml = 2;
+}
+
+// Traditionally a cappuccino is viewed as a drink that should only be consumed in the morning
+message Cappuccino {
+  // 1-2 shots of espresso
+  int32 shots_of_espresso = 1;
+
+  // 60 ml recommended
+  int32 steamed_milk_ml = 2;
+
+  // 60 ml recommended
+  int32 foamed_milk_ml = 3;
+
+  // optional sprinkling of chocolate powder
+  bool sprinklinkg_of_chocolate_poweder = 4;
+}
+
+
+// instructs the coffe machine to make a coffe
+message MakeCoffeRequest {
+
+  oneof coffe_recipe {
+    Cappuccino cappuccino = 1;
+    Macchiato macchiato = 2;
+    LongBlack long_black = 3;
+  }
+
+  // amount of sugar in grams
+  int32 grams_of_sugar = 4;
+
+  // delays the start of the coffe brewing for specified amount in seconds
+  int32 delay = 5;
+}
+
+// When a coffe is successfully brewed, this message is sent to the client
+message MakeCoffeResponse {
+
+}

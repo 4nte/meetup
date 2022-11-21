@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+import "coffe.proto";
+
+
+option go_package = "github.com/4nte/coffe/proto";
+package coffe.v6;
+
+
+service CoffeService {
+    rpc MakeCoffe(MakeCoffeRequest) returns (MakeCoffeResponse) {}
+}
+
+
+// instructs the coffe machine to make a coffe
+message MakeCoffeRequest {
+
+    oneof coffe_recipe {
+      Cappuccino cappuccino = 1;
+      Macchiato macchiato = 2;
+      LongBlack long_black = 3;
+    }
+  
+    // amount of sugar in grams
+    int32 grams_of_sugar = 4;
+  
+    // delays the start of the coffe brewing for specified amount in seconds
+    int32 delay = 5;
+  }
+  
+  // When a coffe is successfully brewed, this message is sent to the client
+  message MakeCoffeResponse {
+  
+  }

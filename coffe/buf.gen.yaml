@@ -1,0 +1,21 @@
+version: v1
+
+managed:
+  enabled: true
+  cc_enable_arenas: false
+  java_multiple_files: true
+
+plugins:
+- name: go
+  out: gen/go
+- name: java
+  out: gen/java
+- name: doc
+  out: gen/doc
+  #opt: markdown, markdown.md
+  #opt: html, index.html
+  #opt: json, doc.json
+  opt: docbook, coffe.docbook
+
+
+
