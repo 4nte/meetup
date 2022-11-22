@@ -16,6 +16,6 @@ plugins:
   #opt: html, index.html
   #opt: json, doc.json
   opt: docbook, coffe.docbook
-
-
+- name: connect-go
+  out: gen/go
 

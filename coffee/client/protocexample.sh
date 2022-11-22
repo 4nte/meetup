@@ -1,0 +1,1 @@
+protoc --c_out=. --java_out=. --js_out=. --go_out=. coffe.proto

@@ -16,15 +16,21 @@ import (
 	"log"
 	"net"
 
-	. "github.com/4nte/coffe/custom_serialization"
+	diy "github.com/4nte/meetup/coffee/diy_serialization"
+	coffe "github.com/4nte/meetup/coffee/proto"
+	"github.com/4nte/meetup/coffee/server/api"
+	protobuf "google.golang.org/protobuf/proto"
 )
 
 func main() {
-	RunServer("localhost:9000")
+	//RunServer("localhost:9000", diyConnectionHandler)
+	//RunServer("localhost:9000", protobufConnectionHandler)
+	api.Setup()
+
 }
 
 // This function is called for every connection
-func HandleConnection(conn net.Conn) {
+func diyConnectionHandler(conn net.Conn) {
 	r := bufio.NewReader(conn)
 
 	for {
@@ -35,19 +41,9 @@ func HandleConnection(conn net.Conn) {
 			}
 			log.Panicf("error reading tag byte: %s", err)
 		}
+		fmt.Printf("first byte is %b\n", messageIdentifier)
 
-		var payloadLength int
-		{
-			switch messageIdentifier {
-			case 0b00000001:
-				payloadLength = MAKE_COFFE_REQUEST_PAYLOAD_SIZE
-			case 0b00000010:
-				payloadLength = MAKE_COFFE_REQUEST_PAYLOAD_SIZE
-			}
-
-		}
-
-		var buffer = make([]byte, payloadLength)
+		var buffer = make([]byte, diy.MAKE_COFFE_REQUEST_PAYLOAD_SIZE)
 
 		// 1. Wait for the message to arrive
 		// 2. Copy the message to the `buffer` variable
@@ -62,35 +58,31 @@ func HandleConnection(conn net.Conn) {
 		}
 
 		// Print to stdout (for debugging)
-		fmt.Printf(`
-		Message received:
-		- size: %d bytes
-		- buffer: %b
-		`, len(buffer), buffer)
+		fmt.Printf("Message received, size: %d, data: %b\n", len(buffer), buffer)
 
-		request := DeserializeMakeCoffeeRequest(buffer)
+		request := diy.DeserializeMakeCoffeeRequest(buffer)
 		fmt.Println(request)
-
 	}
-
 }
 
-func RunServer(address string) {
-	// TCP server setup
-	listen, err := net.Listen("tcp", address)
+func protobufConnectionHandler(conn net.Conn) {
+	r := bufio.NewReader(conn)
+
+	// Read data from the socket
+	data, err := io.ReadAll(r)
 	if err != nil {
-		log.Panicf("failed to create the tcp server: %s", err)
+		panic(err)
 	}
-	fmt.Println("Coffe machine is ready to accept connections")
 
-	// Accept all incoming TCP connections
-	for {
-		conn, err := listen.Accept() // This will block until a new connection arrives
-		if err != nil {
-			log.Panicf("failed to accept connection: %s", err)
-		}
+	// Print the received bytes
+	fmt.Printf("Message received, size: %d, data: %b\n", len(data), data)
 
-		// process the connection in a new go routine
-		go HandleConnection(conn)
+	var request coffe.MakeCoffeRequest
+	err = protobuf.Unmarshal(data, &request)
+	if err != nil {
+		log.Fatalf("faield to deserialize: %s", err)
 	}
+
+	fmt.Printf("Deserialized message: {%v}\n\n", &request)
+
 }

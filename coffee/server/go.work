@@ -1,4 +1,5 @@
 go 1.19
 
 use . 
-use ../custom_serialization
+use ../diy_serialization
+use ../gen/go/github.com/4nte/meetup/coffee/proto

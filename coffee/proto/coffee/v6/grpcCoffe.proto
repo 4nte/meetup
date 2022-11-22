@@ -1,6 +1,11 @@
 syntax = "proto3";
-option go_package = "github.com/4nte/coffee/proto";
+option go_package = "github.com/4nte/meetup/coffee/proto";
 package coffee;
+
+service CoffeService {
+  rpc MakeCoffe(MakeCoffeRequest) returns (MakeCoffeResponse) {}
+  rpc GetState(GetStateRequest) returns (GetStateResponse) {}
+}
 
 message LongBlack {
   // 2 shots recommended
@@ -34,7 +39,6 @@ message Cappuccino {
   bool sprinklinkg_of_chocolate_poweder = 4;
 }
 
-
 // instructs the coffe machine to make a coffe
 message MakeCoffeRequest {
 
@@ -52,6 +56,10 @@ message MakeCoffeRequest {
 }
 
 // When a coffe is successfully brewed, this message is sent to the client
-message MakeCoffeResponse {
+message MakeCoffeResponse {}
 
+message GetStateRequest {}
+message GetStateResponse {
+  int32 remaining_sugar = 1;
+  int32 remaining_milk = 2;
 }

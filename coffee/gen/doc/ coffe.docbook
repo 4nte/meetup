@@ -3,8 +3,148 @@
   <title>Protocol Documentation</title>
   
   <section>
-    <title>coffe.proto</title>
+    <title>grpcCoffe.proto</title>
     <para></para>
+    
+    <section id="coffee.Cappuccino">
+      <title>Cappuccino</title>
+      <para>Traditionally a cappuccino is viewed as a drink that should only be consumed in the morning</para>
+      
+      <table frame="all">
+        <title><classname>Cappuccino</classname> Fields</title>
+        <tgroup cols="4">
+          <colspec colwidth="*"/>
+          <colspec colwidth="*"/>
+          <colspec colwidth="0.5*"/>
+          <colspec colwidth="3*"/>
+          <thead>
+            <row>
+              <entry>Field</entry>
+              <entry>Type</entry>
+              <entry>Label</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            
+            <row>
+              <entry>shots_of_espresso</entry>
+              <entry><link linkend="int32">int32</link></entry>
+              <entry></entry>
+              <entry><para>1-2 shots of espresso</para></entry>
+            </row>
+            
+            <row>
+              <entry>steamed_milk_ml</entry>
+              <entry><link linkend="int32">int32</link></entry>
+              <entry></entry>
+              <entry><para>60 ml recommended</para></entry>
+            </row>
+            
+            <row>
+              <entry>foamed_milk_ml</entry>
+              <entry><link linkend="int32">int32</link></entry>
+              <entry></entry>
+              <entry><para>60 ml recommended</para></entry>
+            </row>
+            
+            <row>
+              <entry>sprinklinkg_of_chocolate_poweder</entry>
+              <entry><link linkend="bool">bool</link></entry>
+              <entry></entry>
+              <entry><para>optional sprinkling of chocolate powder</para></entry>
+            </row>
+            
+          </tbody>
+        </tgroup>
+      </table>
+      
+      
+    </section>
+    
+    <section id="coffee.LongBlack">
+      <title>LongBlack</title>
+      <para></para>
+      
+      <table frame="all">
+        <title><classname>LongBlack</classname> Fields</title>
+        <tgroup cols="4">
+          <colspec colwidth="*"/>
+          <colspec colwidth="*"/>
+          <colspec colwidth="0.5*"/>
+          <colspec colwidth="3*"/>
+          <thead>
+            <row>
+              <entry>Field</entry>
+              <entry>Type</entry>
+              <entry>Label</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            
+            <row>
+              <entry>shots_of_espresso</entry>
+              <entry><link linkend="int32">int32</link></entry>
+              <entry></entry>
+              <entry><para>2 shots recommended</para></entry>
+            </row>
+            
+            <row>
+              <entry>how_water_ml</entry>
+              <entry><link linkend="int32">int32</link></entry>
+              <entry></entry>
+              <entry><para>90 ml recommended</para></entry>
+            </row>
+            
+          </tbody>
+        </tgroup>
+      </table>
+      
+      
+    </section>
+    
+    <section id="coffee.Macchiato">
+      <title>Macchiato</title>
+      <para>Caffè macchiato, sometimes called espresso macchiato, is an espresso coffee drink with a small amount of milk, usually foamed.</para>
+      
+      <table frame="all">
+        <title><classname>Macchiato</classname> Fields</title>
+        <tgroup cols="4">
+          <colspec colwidth="*"/>
+          <colspec colwidth="*"/>
+          <colspec colwidth="0.5*"/>
+          <colspec colwidth="3*"/>
+          <thead>
+            <row>
+              <entry>Field</entry>
+              <entry>Type</entry>
+              <entry>Label</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            
+            <row>
+              <entry>shots_of_espresso</entry>
+              <entry><link linkend="int32">int32</link></entry>
+              <entry></entry>
+              <entry><para>1 shot recommended</para></entry>
+            </row>
+            
+            <row>
+              <entry>steamed_milk_ml</entry>
+              <entry><link linkend="int32">int32</link></entry>
+              <entry></entry>
+              <entry><para>1-2 ml recommended</para></entry>
+            </row>
+            
+          </tbody>
+        </tgroup>
+      </table>
+      
+      
+    </section>
     
     <section id="coffee.MakeCoffeRequest">
       <title>MakeCoffeRequest</title>
@@ -28,10 +168,38 @@
           <tbody>
             
             <row>
-              <entry>type</entry>
-              <entry><link linkend="coffee.CoffeType">CoffeType</link></entry>
+              <entry>cappuccino</entry>
+              <entry><link linkend="coffee.Cappuccino">Cappuccino</link></entry>
               <entry></entry>
-              <entry><para>type of coffe to make</para></entry>
+              <entry><para></para></entry>
+            </row>
+            
+            <row>
+              <entry>macchiato</entry>
+              <entry><link linkend="coffee.Macchiato">Macchiato</link></entry>
+              <entry></entry>
+              <entry><para></para></entry>
+            </row>
+            
+            <row>
+              <entry>long_black</entry>
+              <entry><link linkend="coffee.LongBlack">LongBlack</link></entry>
+              <entry></entry>
+              <entry><para></para></entry>
+            </row>
+            
+            <row>
+              <entry>grams_of_sugar</entry>
+              <entry><link linkend="int32">int32</link></entry>
+              <entry></entry>
+              <entry><para>amount of sugar in grams</para></entry>
+            </row>
+            
+            <row>
+              <entry>delay</entry>
+              <entry><link linkend="int32">int32</link></entry>
+              <entry></entry>
+              <entry><para>delays the start of the coffe brewing for specified amount in seconds</para></entry>
             </row>
             
           </tbody>
@@ -41,46 +209,42 @@
       
     </section>
     
+    <section id="coffee.MakeCoffeResponse">
+      <title>MakeCoffeResponse</title>
+      <para>When a coffe is successfully brewed, this message is sent to the client</para>
+      
+      
+    </section>
     
-    <section id="coffee.CoffeType">
-      <title>CoffeType</title>
+    
+
+    
+
+    
+    <section id="coffee.CoffeService">
+      <title>CoffeService</title>
       <para></para>
       <table frame="all">
-        <title><classname>CoffeType</classname> Values</title>
-        <tgroup cols="3">
+        <title><classname>CoffeService</classname> Methods</title>
+        <tgroup cols="4">
+          <colspec colwidth="*"/>
           <colspec colwidth="*"/>
           <colspec colwidth="*"/>
           <colspec colwidth="3*"/>
           <thead>
             <row>
-              <entry>Name</entry>
-              <entry>Number</entry>
+              <entry>Method Name</entry>
+              <entry>Request Type</entry>
+              <entry>Response Type</entry>
               <entry>Description</entry>
             </row>
           </thead>
           <tbody>
             
             <row>
-              <entry>UNSPECIFIED</entry>
-              <entry>0</entry>
-              <entry><para></para></entry>
-            </row>
-            
-            <row>
-              <entry>ESPRESSO</entry>
-              <entry>1</entry>
-              <entry><para></para></entry>
-            </row>
-            
-            <row>
-              <entry>CAPUCCINO</entry>
-              <entry>2</entry>
-              <entry><para></para></entry>
-            </row>
-            
-            <row>
-              <entry>AMERICANO</entry>
-              <entry>3</entry>
+              <entry>MakeCoffe</entry>
+              <entry><link linkend="coffee.MakeCoffeRequest">MakeCoffeRequest</link></entry>
+              <entry><link linkend="coffee.MakeCoffeResponse">MakeCoffeResponse</link></entry>
               <entry><para></para></entry>
             </row>
             
@@ -88,10 +252,6 @@
         </tgroup>
       </table>
     </section>
-    
-
-    
-
     
   </section>
   

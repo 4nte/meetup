@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/4nte/coffee/proto";
+option go_package = "github.com/4nte/meetup/coffee/proto";
 package coffee;
 
 enum CoffeeType {
@@ -15,7 +15,4 @@ message MakeCoffeRequest {
 
   // type of coffe to make
   CoffeeType type = 1;
-
-  // amount of sugar in grams
-  int32 sugar_amount = 2;
 }
